@@ -1,0 +1,1286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.serverBigdata.api.dao.UserDao">
+
+    <resultMap id="userResultMap" type="com.serverBigdata.api.entity.User">
+        <id column="id" property="id"/> 
+        <result column="userId" property="userId"/> 
+        <result column="phone" property="phone"/> 
+        <result column="aliwangwang" property="aliwangwang"/> 
+        <result column="wechatId" property="wechatId"/> 
+        <result column="zimeihuiUserId" property="zimeihuiUserId"/> 
+        <result column="userName" property="userName"/> 
+        <result column="headImgurl" property="headImgurl"/> 
+        <result column="shendengUid" property="shendengUid"/> 
+        <result column="level" property="level"/> 
+        <result column="sex" property="sex"/> 
+        <result column="height" property="height"/> 
+        <result column="weight" property="weight"/> 
+        <result column="birthday" property="birthday"/> 
+        <result column="birthyear" property="birthyear"/> 
+        <result column="country" property="country"/> 
+        <result column="province" property="province"/> 
+        <result column="city" property="city"/> 
+        <result column="county" property="county"/> 
+        <result column="chatCount" property="chatCount"/> 
+        <result column="firstChatTime" property="firstChatTime"/> 
+        <result column="firstChatPlatform" property="firstChatPlatform"/> 
+        <result column="firstChatWith" property="firstChatWith"/> 
+        <result column="lastChatTime" property="lastChatTime"/> 
+        <result column="lastChatPlatform" property="lastChatPlatform"/> 
+        <result column="lastChatWith" property="lastChatWith"/> 
+        <result column="payAmount" property="payAmount"/> 
+        <result column="payCount" property="payCount"/> 
+        <result column="refundAmount" property="refundAmount"/> 
+        <result column="refundCount" property="refundCount"/> 
+        <result column="lastPayAmount" property="lastPayAmount"/> 
+        <result column="lastPayTime" property="lastPayTime"/> 
+        <result column="firstPayAmount" property="firstPayAmount"/> 
+        <result column="firstPayTime" property="firstPayTime"/> 
+        <result column="firstLoginTime" property="firstLoginTime"/> 
+        <result column="firstLoginPlatform" property="firstLoginPlatform"/> 
+        <result column="isTaobaoUser" property="isTaobaoUser"/> 
+        <result column="isWechatUser" property="isWechatUser"/> 
+        <result column="isZimeihuiUser" property="isZimeihuiUser"/> 
+        <result column="isTaobaoChated" property="isTaobaoChated"/> 
+        <result column="isWechatChated" property="isWechatChated"/> 
+        <result column="isZimeihuiChated" property="isZimeihuiChated"/> 
+        <result column="isTaobaoPayed" property="isTaobaoPayed"/> 
+        <result column="isWechatPayed" property="isWechatPayed"/> 
+        <result column="isZimeihuiPayed" property="isZimeihuiPayed"/> 
+        <result column="taobaoPayAmount" property="taobaoPayAmount"/> 
+        <result column="taobaoPayCount" property="taobaoPayCount"/> 
+        <result column="taobaoFirstPayAmount" property="taobaoFirstPayAmount"/> 
+        <result column="taobaoFirstPayTime" property="taobaoFirstPayTime"/> 
+        <result column="taobaoLastPayAmount" property="taobaoLastPayAmount"/> 
+        <result column="taobaoLastPayTime" property="taobaoLastPayTime"/> 
+        <result column="wechatChatCout" property="wechatChatCout"/> 
+        <result column="wechatChatInfoTotal" property="wechatChatInfoTotal"/> 
+        <result column="wechatNo" property="wechatNo"/> 
+        <result column="wechatNickname" property="wechatNickname"/> 
+        <result column="wechatBelongTo" property="wechatBelongTo"/> 
+        <result column="wechatFirstAdd" property="wechatFirstAdd"/> 
+        <result column="wechatFirstAddTime" property="wechatFirstAddTime"/> 
+        <result column="wechatFirstChatWith" property="wechatFirstChatWith"/> 
+        <result column="wechatFirstChatTime" property="wechatFirstChatTime"/> 
+        <result column="wechatLastChatWith" property="wechatLastChatWith"/> 
+        <result column="wechatLastChatTime" property="wechatLastChatTime"/> 
+        <result column="wechatPayAmount" property="wechatPayAmount"/> 
+        <result column="wechatPayCount" property="wechatPayCount"/> 
+        <result column="wechatFirstPayTime" property="wechatFirstPayTime"/> 
+        <result column="wecahtFirstPayAmount" property="wecahtFirstPayAmount"/> 
+        <result column="wecahtLastPayTime" property="wecahtLastPayTime"/> 
+        <result column="wechatLastPayAmount" property="wechatLastPayAmount"/> 
+        <result column="wechatLifeStatus" property="wechatLifeStatus"/> 
+        <result column="wechatIsVIPCardUser" property="wechatIsVIPCardUser"/> 
+        <result column="wechatVIPTime" property="wechatVIPTime"/> 
+        <result column="wechatVIPCardBalance" property="wechatVIPCardBalance"/> 
+        <result column="wechatVIPCardAmount" property="wechatVIPCardAmount"/> 
+        <result column="zimeihuiPhone" property="zimeihuiPhone"/> 
+        <result column="zimeihuiNickname" property="zimeihuiNickname"/> 
+        <result column="zimeihuiFXRole" property="zimeihuiFXRole"/> 
+        <result column="zimeihuiRegisterTime" property="zimeihuiRegisterTime"/> 
+        <result column="zimeihuiFirstPayTime" property="zimeihuiFirstPayTime"/> 
+        <result column="zimeihuiFirstPayAmount" property="zimeihuiFirstPayAmount"/> 
+        <result column="zimeihuiLastPayTime" property="zimeihuiLastPayTime"/> 
+        <result column="zimeihuiPayAmount" property="zimeihuiPayAmount"/> 
+        <result column="zimeihuiPayCount" property="zimeihuiPayCount"/> 
+        <result column="isWOARegister" property="isWOARegister"/> 
+        <result column="createTime" property="createTime"/> 
+        <result column="createSource" property="createSource"/> 
+        <result column="updateTime" property="updateTime"/> 
+        <result column="remark" property="remark"/> 
+
+        
+        
+    </resultMap>
+
+    <sql id="userColumns">
+        u_user.id AS "id",
+        u_user.userId AS "userId",
+        u_user.phone AS "phone",
+        u_user.aliwangwang AS "aliwangwang",
+        u_user.wechatId AS "wechatId",
+        u_user.zimeihuiUserId AS "zimeihuiUserId",
+        u_user.userName AS "userName",
+        u_user.headImgurl AS "headImgurl",
+        u_user.shendengUid AS "shendengUid",
+        u_user.level AS "level",
+        u_user.sex AS "sex",
+        u_user.height AS "height",
+        u_user.weight AS "weight",
+        u_user.birthday AS "birthday",
+        u_user.birthyear AS "birthyear",
+        u_user.country AS "country",
+        u_user.province AS "province",
+        u_user.city AS "city",
+        u_user.county AS "county",
+        u_user.chatCount AS "chatCount",
+        u_user.firstChatTime AS "firstChatTime",
+        u_user.firstChatPlatform AS "firstChatPlatform",
+        u_user.firstChatWith AS "firstChatWith",
+        u_user.lastChatTime AS "lastChatTime",
+        u_user.lastChatPlatform AS "lastChatPlatform",
+        u_user.lastChatWith AS "lastChatWith",
+        u_user.payAmount AS "payAmount",
+        u_user.payCount AS "payCount",
+        u_user.refundAmount AS "refundAmount",
+        u_user.refundCount AS "refundCount",
+        u_user.lastPayAmount AS "lastPayAmount",
+        u_user.lastPayTime AS "lastPayTime",
+        u_user.firstPayAmount AS "firstPayAmount",
+        u_user.firstPayTime AS "firstPayTime",
+        u_user.firstLoginTime AS "firstLoginTime",
+        u_user.firstLoginPlatform AS "firstLoginPlatform",
+        u_user.isTaobaoUser AS "isTaobaoUser",
+        u_user.isWechatUser AS "isWechatUser",
+        u_user.isZimeihuiUser AS "isZimeihuiUser",
+        u_user.isTaobaoChated AS "isTaobaoChated",
+        u_user.isWechatChated AS "isWechatChated",
+        u_user.isZimeihuiChated AS "isZimeihuiChated",
+        u_user.isTaobaoPayed AS "isTaobaoPayed",
+        u_user.isWechatPayed AS "isWechatPayed",
+        u_user.isZimeihuiPayed AS "isZimeihuiPayed",
+        u_user.taobaoPayAmount AS "taobaoPayAmount",
+        u_user.taobaoPayCount AS "taobaoPayCount",
+        u_user.taobaoFirstPayAmount AS "taobaoFirstPayAmount",
+        u_user.taobaoFirstPayTime AS "taobaoFirstPayTime",
+        u_user.taobaoLastPayAmount AS "taobaoLastPayAmount",
+        u_user.taobaoLastPayTime AS "taobaoLastPayTime",
+        u_user.wechatChatCout AS "wechatChatCout",
+        u_user.wechatChatInfoTotal AS "wechatChatInfoTotal",
+        u_user.wechatNo AS "wechatNo",
+        u_user.wechatNickname AS "wechatNickname",
+        u_user.wechatBelongTo AS "wechatBelongTo",
+        u_user.wechatFirstAdd AS "wechatFirstAdd",
+        u_user.wechatFirstAddTime AS "wechatFirstAddTime",
+        u_user.wechatFirstChatWith AS "wechatFirstChatWith",
+        u_user.wechatFirstChatTime AS "wechatFirstChatTime",
+        u_user.wechatLastChatWith AS "wechatLastChatWith",
+        u_user.wechatLastChatTime AS "wechatLastChatTime",
+        u_user.wechatPayAmount AS "wechatPayAmount",
+        u_user.wechatPayCount AS "wechatPayCount",
+        u_user.wechatFirstPayTime AS "wechatFirstPayTime",
+        u_user.wecahtFirstPayAmount AS "wecahtFirstPayAmount",
+        u_user.wecahtLastPayTime AS "wecahtLastPayTime",
+        u_user.wechatLastPayAmount AS "wechatLastPayAmount",
+        u_user.wechatLifeStatus AS "wechatLifeStatus",
+        u_user.wechatIsVIPCardUser AS "wechatIsVIPCardUser",
+        u_user.wechatVIPTime AS "wechatVIPTime",
+        u_user.wechatVIPCardBalance AS "wechatVIPCardBalance",
+        u_user.wechatVIPCardAmount AS "wechatVIPCardAmount",
+        u_user.zimeihuiPhone AS "zimeihuiPhone",
+        u_user.zimeihuiNickname AS "zimeihuiNickname",
+        u_user.zimeihuiFXRole AS "zimeihuiFXRole",
+        u_user.zimeihuiRegisterTime AS "zimeihuiRegisterTime",
+        u_user.zimeihuiFirstPayTime AS "zimeihuiFirstPayTime",
+        u_user.zimeihuiFirstPayAmount AS "zimeihuiFirstPayAmount",
+        u_user.zimeihuiLastPayTime AS "zimeihuiLastPayTime",
+        u_user.zimeihuiPayAmount AS "zimeihuiPayAmount",
+        u_user.zimeihuiPayCount AS "zimeihuiPayCount",
+        u_user.isWOARegister AS "isWOARegister",
+        u_user.createTime AS "createTime",
+        u_user.createSource AS "createSource",
+        u_user.updateTime AS "updateTime",
+        u_user.remark AS "remark"
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="userResultMap">
+        SELECT
+            <include refid="userColumns" />
+        FROM
+            u_user
+        <where>
+            u_user.id = #{id}
+        </where>
+    </select>
+    
+    <select id="selectByIds" resultMap="userResultMap">
+        SELECT
+        	<include refid="userColumns" />
+        FROM
+        	u_user
+        <where>
+            id in <foreach collection ="list" item="id" separator ="," open="(" close=")">
+                		#{id}
+            	  </foreach>
+        </where>
+    </select>
+
+    <select id="select" resultMap="userResultMap" parameterType="com.serverBigdata.api.entity.User">
+        SELECT
+            <include refid="userColumns" />
+        FROM
+            u_user
+        <where>
+            <if test="id != null ">
+                and u_user.id = #{id}
+            </if>
+            <if test="userId != null ">
+                and u_user.userId = #{userId}
+            </if>
+            <if test="phone != null and phone !='' ">
+                and u_user.phone = #{phone}
+            </if>
+            <if test="aliwangwang != null and aliwangwang !='' ">
+                and u_user.aliwangwang = #{aliwangwang}
+            </if>
+            <if test="wechatId != null and wechatId !='' ">
+                and u_user.wechatId = #{wechatId}
+            </if>
+            <if test="zimeihuiUserId != null and zimeihuiUserId !='' ">
+                and u_user.zimeihuiUserId = #{zimeihuiUserId}
+            </if>
+            <if test="userName != null and userName !='' ">
+                and u_user.userName = #{userName}
+            </if>
+            <if test="headImgurl != null and headImgurl !='' ">
+                and u_user.headImgurl = #{headImgurl}
+            </if>
+            <if test="shendengUid != null and shendengUid !='' ">
+                and u_user.shendengUid = #{shendengUid}
+            </if>
+            <if test="level != null and level !='' ">
+                and u_user.level = #{level}
+            </if>
+            <if test="sex != null ">
+                and u_user.sex = #{sex}
+            </if>
+            <if test="height != null ">
+                and u_user.height = #{height}
+            </if>
+            <if test="weight != null ">
+                and u_user.weight = #{weight}
+            </if>
+            <if test="birthday != null and birthday !='' ">
+                and u_user.birthday = #{birthday}
+            </if>
+            <if test="birthyear != null ">
+                and u_user.birthyear = #{birthyear}
+            </if>
+            <if test="country != null and country !='' ">
+                and u_user.country = #{country}
+            </if>
+            <if test="province != null and province !='' ">
+                and u_user.province = #{province}
+            </if>
+            <if test="city != null and city !='' ">
+                and u_user.city = #{city}
+            </if>
+            <if test="county != null and county !='' ">
+                and u_user.county = #{county}
+            </if>
+            <if test="chatCount != null ">
+                and u_user.chatCount = #{chatCount}
+            </if>
+            <if test="firstChatTime != null and firstChatTime !='' ">
+                and u_user.firstChatTime = #{firstChatTime}
+            </if>
+            <if test="firstChatPlatform != null and firstChatPlatform !='' ">
+                and u_user.firstChatPlatform = #{firstChatPlatform}
+            </if>
+            <if test="firstChatWith != null and firstChatWith !='' ">
+                and u_user.firstChatWith = #{firstChatWith}
+            </if>
+            <if test="lastChatTime != null and lastChatTime !='' ">
+                and u_user.lastChatTime = #{lastChatTime}
+            </if>
+            <if test="lastChatPlatform != null and lastChatPlatform !='' ">
+                and u_user.lastChatPlatform = #{lastChatPlatform}
+            </if>
+            <if test="lastChatWith != null and lastChatWith !='' ">
+                and u_user.lastChatWith = #{lastChatWith}
+            </if>
+            <if test="payAmount != null ">
+                and u_user.payAmount = #{payAmount}
+            </if>
+            <if test="payCount != null ">
+                and u_user.payCount = #{payCount}
+            </if>
+            <if test="refundAmount != null ">
+                and u_user.refundAmount = #{refundAmount}
+            </if>
+            <if test="refundCount != null ">
+                and u_user.refundCount = #{refundCount}
+            </if>
+            <if test="lastPayAmount != null ">
+                and u_user.lastPayAmount = #{lastPayAmount}
+            </if>
+            <if test="lastPayTime != null and lastPayTime !='' ">
+                and u_user.lastPayTime = #{lastPayTime}
+            </if>
+            <if test="firstPayAmount != null ">
+                and u_user.firstPayAmount = #{firstPayAmount}
+            </if>
+            <if test="firstPayTime != null and firstPayTime !='' ">
+                and u_user.firstPayTime = #{firstPayTime}
+            </if>
+            <if test="firstLoginTime != null and firstLoginTime !='' ">
+                and u_user.firstLoginTime = #{firstLoginTime}
+            </if>
+            <if test="firstLoginPlatform != null and firstLoginPlatform !='' ">
+                and u_user.firstLoginPlatform = #{firstLoginPlatform}
+            </if>
+            <if test="isTaobaoUser != null ">
+                and u_user.isTaobaoUser = #{isTaobaoUser}
+            </if>
+            <if test="isWechatUser != null ">
+                and u_user.isWechatUser = #{isWechatUser}
+            </if>
+            <if test="isZimeihuiUser != null ">
+                and u_user.isZimeihuiUser = #{isZimeihuiUser}
+            </if>
+            <if test="isTaobaoChated != null ">
+                and u_user.isTaobaoChated = #{isTaobaoChated}
+            </if>
+            <if test="isWechatChated != null ">
+                and u_user.isWechatChated = #{isWechatChated}
+            </if>
+            <if test="isZimeihuiChated != null ">
+                and u_user.isZimeihuiChated = #{isZimeihuiChated}
+            </if>
+            <if test="isTaobaoPayed != null ">
+                and u_user.isTaobaoPayed = #{isTaobaoPayed}
+            </if>
+            <if test="isWechatPayed != null ">
+                and u_user.isWechatPayed = #{isWechatPayed}
+            </if>
+            <if test="isZimeihuiPayed != null ">
+                and u_user.isZimeihuiPayed = #{isZimeihuiPayed}
+            </if>
+            <if test="taobaoPayAmount != null ">
+                and u_user.taobaoPayAmount = #{taobaoPayAmount}
+            </if>
+            <if test="taobaoPayCount != null ">
+                and u_user.taobaoPayCount = #{taobaoPayCount}
+            </if>
+            <if test="taobaoFirstPayAmount != null ">
+                and u_user.taobaoFirstPayAmount = #{taobaoFirstPayAmount}
+            </if>
+            <if test="taobaoFirstPayTime != null ">
+                and u_user.taobaoFirstPayTime = #{taobaoFirstPayTime}
+            </if>
+            <if test="taobaoLastPayAmount != null ">
+                and u_user.taobaoLastPayAmount = #{taobaoLastPayAmount}
+            </if>
+            <if test="taobaoLastPayTime != null and taobaoLastPayTime !='' ">
+                and u_user.taobaoLastPayTime = #{taobaoLastPayTime}
+            </if>
+            <if test="wechatChatCout != null ">
+                and u_user.wechatChatCout = #{wechatChatCout}
+            </if>
+            <if test="wechatChatInfoTotal != null ">
+                and u_user.wechatChatInfoTotal = #{wechatChatInfoTotal}
+            </if>
+            <if test="wechatNo != null and wechatNo !='' ">
+                and u_user.wechatNo = #{wechatNo}
+            </if>
+            <if test="wechatNickname != null and wechatNickname !='' ">
+                and u_user.wechatNickname = #{wechatNickname}
+            </if>
+            <if test="wechatBelongTo != null and wechatBelongTo !='' ">
+                and u_user.wechatBelongTo = #{wechatBelongTo}
+            </if>
+            <if test="wechatFirstAdd != null and wechatFirstAdd !='' ">
+                and u_user.wechatFirstAdd = #{wechatFirstAdd}
+            </if>
+            <if test="wechatFirstAddTime != null and wechatFirstAddTime !='' ">
+                and u_user.wechatFirstAddTime = #{wechatFirstAddTime}
+            </if>
+            <if test="wechatFirstChatWith != null and wechatFirstChatWith !='' ">
+                and u_user.wechatFirstChatWith = #{wechatFirstChatWith}
+            </if>
+            <if test="wechatFirstChatTime != null and wechatFirstChatTime !='' ">
+                and u_user.wechatFirstChatTime = #{wechatFirstChatTime}
+            </if>
+            <if test="wechatLastChatWith != null and wechatLastChatWith !='' ">
+                and u_user.wechatLastChatWith = #{wechatLastChatWith}
+            </if>
+            <if test="wechatLastChatTime != null and wechatLastChatTime !='' ">
+                and u_user.wechatLastChatTime = #{wechatLastChatTime}
+            </if>
+            <if test="wechatPayAmount != null ">
+                and u_user.wechatPayAmount = #{wechatPayAmount}
+            </if>
+            <if test="wechatPayCount != null ">
+                and u_user.wechatPayCount = #{wechatPayCount}
+            </if>
+            <if test="wechatFirstPayTime != null and wechatFirstPayTime !='' ">
+                and u_user.wechatFirstPayTime = #{wechatFirstPayTime}
+            </if>
+            <if test="wecahtFirstPayAmount != null ">
+                and u_user.wecahtFirstPayAmount = #{wecahtFirstPayAmount}
+            </if>
+            <if test="wecahtLastPayTime != null and wecahtLastPayTime !='' ">
+                and u_user.wecahtLastPayTime = #{wecahtLastPayTime}
+            </if>
+            <if test="wechatLastPayAmount != null ">
+                and u_user.wechatLastPayAmount = #{wechatLastPayAmount}
+            </if>
+            <if test="wechatLifeStatus != null and wechatLifeStatus !='' ">
+                and u_user.wechatLifeStatus = #{wechatLifeStatus}
+            </if>
+            <if test="wechatIsVIPCardUser != null ">
+                and u_user.wechatIsVIPCardUser = #{wechatIsVIPCardUser}
+            </if>
+            <if test="wechatVIPTime != null and wechatVIPTime !='' ">
+                and u_user.wechatVIPTime = #{wechatVIPTime}
+            </if>
+            <if test="wechatVIPCardBalance != null ">
+                and u_user.wechatVIPCardBalance = #{wechatVIPCardBalance}
+            </if>
+            <if test="wechatVIPCardAmount != null ">
+                and u_user.wechatVIPCardAmount = #{wechatVIPCardAmount}
+            </if>
+            <if test="zimeihuiPhone != null and zimeihuiPhone !='' ">
+                and u_user.zimeihuiPhone = #{zimeihuiPhone}
+            </if>
+            <if test="zimeihuiNickname != null and zimeihuiNickname !='' ">
+                and u_user.zimeihuiNickname = #{zimeihuiNickname}
+            </if>
+            <if test="zimeihuiFXRole != null and zimeihuiFXRole !='' ">
+                and u_user.zimeihuiFXRole = #{zimeihuiFXRole}
+            </if>
+            <if test="zimeihuiRegisterTime != null and zimeihuiRegisterTime !='' ">
+                and u_user.zimeihuiRegisterTime = #{zimeihuiRegisterTime}
+            </if>
+            <if test="zimeihuiFirstPayTime != null and zimeihuiFirstPayTime !='' ">
+                and u_user.zimeihuiFirstPayTime = #{zimeihuiFirstPayTime}
+            </if>
+            <if test="zimeihuiFirstPayAmount != null ">
+                and u_user.zimeihuiFirstPayAmount = #{zimeihuiFirstPayAmount}
+            </if>
+            <if test="zimeihuiLastPayTime != null and zimeihuiLastPayTime !='' ">
+                and u_user.zimeihuiLastPayTime = #{zimeihuiLastPayTime}
+            </if>
+            <if test="zimeihuiPayAmount != null ">
+                and u_user.zimeihuiPayAmount = #{zimeihuiPayAmount}
+            </if>
+            <if test="zimeihuiPayCount != null ">
+                and u_user.zimeihuiPayCount = #{zimeihuiPayCount}
+            </if>
+            <if test="isWOARegister != null ">
+                and u_user.isWOARegister = #{isWOARegister}
+            </if>
+            <if test="createTime != null and createTime !='' ">
+                and u_user.createTime = #{createTime}
+            </if>
+            <if test="createSource != null and createSource !='' ">
+                and u_user.createSource = #{createSource}
+            </if>
+            <if test="updateTime != null and updateTime !='' ">
+                and u_user.updateTime = #{updateTime}
+            </if>
+            <if test="remark != null and remark !='' ">
+                and u_user.remark = #{remark}
+            </if>
+
+        </where>
+    </select>
+
+
+    <insert id="insert" parameterType="com.serverBigdata.api.entity.User">
+        INSERT INTO u_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="userId != null ">
+                userId,
+            </if>
+            <if test="phone != null and phone !='' ">
+                phone,
+            </if>
+            <if test="aliwangwang != null and aliwangwang !='' ">
+                aliwangwang,
+            </if>
+            <if test="wechatId != null and wechatId !='' ">
+                wechatId,
+            </if>
+            <if test="zimeihuiUserId != null and zimeihuiUserId !='' ">
+                zimeihuiUserId,
+            </if>
+            <if test="userName != null and userName !='' ">
+                userName,
+            </if>
+            <if test="headImgurl != null and headImgurl !='' ">
+                headImgurl,
+            </if>
+            <if test="shendengUid != null and shendengUid !='' ">
+                shendengUid,
+            </if>
+            <if test="level != null and level !='' ">
+                level,
+            </if>
+            <if test="sex != null ">
+                sex,
+            </if>
+            <if test="height != null ">
+                height,
+            </if>
+            <if test="weight != null ">
+                weight,
+            </if>
+            <if test="birthday != null and birthday !='' ">
+                birthday,
+            </if>
+            <if test="birthyear != null ">
+                birthyear,
+            </if>
+            <if test="country != null and country !='' ">
+                country,
+            </if>
+            <if test="province != null and province !='' ">
+                province,
+            </if>
+            <if test="city != null and city !='' ">
+                city,
+            </if>
+            <if test="county != null and county !='' ">
+                county,
+            </if>
+            <if test="chatCount != null ">
+                chatCount,
+            </if>
+            <if test="firstChatTime != null and firstChatTime !='' ">
+                firstChatTime,
+            </if>
+            <if test="firstChatPlatform != null and firstChatPlatform !='' ">
+                firstChatPlatform,
+            </if>
+            <if test="firstChatWith != null and firstChatWith !='' ">
+                firstChatWith,
+            </if>
+            <if test="lastChatTime != null and lastChatTime !='' ">
+                lastChatTime,
+            </if>
+            <if test="lastChatPlatform != null and lastChatPlatform !='' ">
+                lastChatPlatform,
+            </if>
+            <if test="lastChatWith != null and lastChatWith !='' ">
+                lastChatWith,
+            </if>
+            <if test="payAmount != null ">
+                payAmount,
+            </if>
+            <if test="payCount != null ">
+                payCount,
+            </if>
+            <if test="refundAmount != null ">
+                refundAmount,
+            </if>
+            <if test="refundCount != null ">
+                refundCount,
+            </if>
+            <if test="lastPayAmount != null ">
+                lastPayAmount,
+            </if>
+            <if test="lastPayTime != null and lastPayTime !='' ">
+                lastPayTime,
+            </if>
+            <if test="firstPayAmount != null ">
+                firstPayAmount,
+            </if>
+            <if test="firstPayTime != null and firstPayTime !='' ">
+                firstPayTime,
+            </if>
+            <if test="firstLoginTime != null and firstLoginTime !='' ">
+                firstLoginTime,
+            </if>
+            <if test="firstLoginPlatform != null and firstLoginPlatform !='' ">
+                firstLoginPlatform,
+            </if>
+            <if test="isTaobaoUser != null ">
+                isTaobaoUser,
+            </if>
+            <if test="isWechatUser != null ">
+                isWechatUser,
+            </if>
+            <if test="isZimeihuiUser != null ">
+                isZimeihuiUser,
+            </if>
+            <if test="isTaobaoChated != null ">
+                isTaobaoChated,
+            </if>
+            <if test="isWechatChated != null ">
+                isWechatChated,
+            </if>
+            <if test="isZimeihuiChated != null ">
+                isZimeihuiChated,
+            </if>
+            <if test="isTaobaoPayed != null ">
+                isTaobaoPayed,
+            </if>
+            <if test="isWechatPayed != null ">
+                isWechatPayed,
+            </if>
+            <if test="isZimeihuiPayed != null ">
+                isZimeihuiPayed,
+            </if>
+            <if test="taobaoPayAmount != null ">
+                taobaoPayAmount,
+            </if>
+            <if test="taobaoPayCount != null ">
+                taobaoPayCount,
+            </if>
+            <if test="taobaoFirstPayAmount != null ">
+                taobaoFirstPayAmount,
+            </if>
+            <if test="taobaoFirstPayTime != null ">
+                taobaoFirstPayTime,
+            </if>
+            <if test="taobaoLastPayAmount != null ">
+                taobaoLastPayAmount,
+            </if>
+            <if test="taobaoLastPayTime != null and taobaoLastPayTime !='' ">
+                taobaoLastPayTime,
+            </if>
+            <if test="wechatChatCout != null ">
+                wechatChatCout,
+            </if>
+            <if test="wechatChatInfoTotal != null ">
+                wechatChatInfoTotal,
+            </if>
+            <if test="wechatNo != null and wechatNo !='' ">
+                wechatNo,
+            </if>
+            <if test="wechatNickname != null and wechatNickname !='' ">
+                wechatNickname,
+            </if>
+            <if test="wechatBelongTo != null and wechatBelongTo !='' ">
+                wechatBelongTo,
+            </if>
+            <if test="wechatFirstAdd != null and wechatFirstAdd !='' ">
+                wechatFirstAdd,
+            </if>
+            <if test="wechatFirstAddTime != null and wechatFirstAddTime !='' ">
+                wechatFirstAddTime,
+            </if>
+            <if test="wechatFirstChatWith != null and wechatFirstChatWith !='' ">
+                wechatFirstChatWith,
+            </if>
+            <if test="wechatFirstChatTime != null and wechatFirstChatTime !='' ">
+                wechatFirstChatTime,
+            </if>
+            <if test="wechatLastChatWith != null and wechatLastChatWith !='' ">
+                wechatLastChatWith,
+            </if>
+            <if test="wechatLastChatTime != null and wechatLastChatTime !='' ">
+                wechatLastChatTime,
+            </if>
+            <if test="wechatPayAmount != null ">
+                wechatPayAmount,
+            </if>
+            <if test="wechatPayCount != null ">
+                wechatPayCount,
+            </if>
+            <if test="wechatFirstPayTime != null and wechatFirstPayTime !='' ">
+                wechatFirstPayTime,
+            </if>
+            <if test="wecahtFirstPayAmount != null ">
+                wecahtFirstPayAmount,
+            </if>
+            <if test="wecahtLastPayTime != null and wecahtLastPayTime !='' ">
+                wecahtLastPayTime,
+            </if>
+            <if test="wechatLastPayAmount != null ">
+                wechatLastPayAmount,
+            </if>
+            <if test="wechatLifeStatus != null and wechatLifeStatus !='' ">
+                wechatLifeStatus,
+            </if>
+            <if test="wechatIsVIPCardUser != null ">
+                wechatIsVIPCardUser,
+            </if>
+            <if test="wechatVIPTime != null and wechatVIPTime !='' ">
+                wechatVIPTime,
+            </if>
+            <if test="wechatVIPCardBalance != null ">
+                wechatVIPCardBalance,
+            </if>
+            <if test="wechatVIPCardAmount != null ">
+                wechatVIPCardAmount,
+            </if>
+            <if test="zimeihuiPhone != null and zimeihuiPhone !='' ">
+                zimeihuiPhone,
+            </if>
+            <if test="zimeihuiNickname != null and zimeihuiNickname !='' ">
+                zimeihuiNickname,
+            </if>
+            <if test="zimeihuiFXRole != null and zimeihuiFXRole !='' ">
+                zimeihuiFXRole,
+            </if>
+            <if test="zimeihuiRegisterTime != null and zimeihuiRegisterTime !='' ">
+                zimeihuiRegisterTime,
+            </if>
+            <if test="zimeihuiFirstPayTime != null and zimeihuiFirstPayTime !='' ">
+                zimeihuiFirstPayTime,
+            </if>
+            <if test="zimeihuiFirstPayAmount != null ">
+                zimeihuiFirstPayAmount,
+            </if>
+            <if test="zimeihuiLastPayTime != null and zimeihuiLastPayTime !='' ">
+                zimeihuiLastPayTime,
+            </if>
+            <if test="zimeihuiPayAmount != null ">
+                zimeihuiPayAmount,
+            </if>
+            <if test="zimeihuiPayCount != null ">
+                zimeihuiPayCount,
+            </if>
+            <if test="isWOARegister != null ">
+                isWOARegister,
+            </if>
+            <if test="createTime != null and createTime !='' ">
+                createTime,
+            </if>
+            <if test="createSource != null and createSource !='' ">
+                createSource,
+            </if>
+            <if test="updateTime != null and updateTime !='' ">
+                updateTime,
+            </if>
+            <if test="remark != null and remark !='' ">
+                remark,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id},
+            </if>
+            <if test="userId != null ">
+                #{userId},
+            </if>
+            <if test="phone != null and phone !='' ">
+                #{phone},
+            </if>
+            <if test="aliwangwang != null and aliwangwang !='' ">
+                #{aliwangwang},
+            </if>
+            <if test="wechatId != null and wechatId !='' ">
+                #{wechatId},
+            </if>
+            <if test="zimeihuiUserId != null and zimeihuiUserId !='' ">
+                #{zimeihuiUserId},
+            </if>
+            <if test="userName != null and userName !='' ">
+                #{userName},
+            </if>
+            <if test="headImgurl != null and headImgurl !='' ">
+                #{headImgurl},
+            </if>
+            <if test="shendengUid != null and shendengUid !='' ">
+                #{shendengUid},
+            </if>
+            <if test="level != null and level !='' ">
+                #{level},
+            </if>
+            <if test="sex != null ">
+                #{sex},
+            </if>
+            <if test="height != null ">
+                #{height},
+            </if>
+            <if test="weight != null ">
+                #{weight},
+            </if>
+            <if test="birthday != null and birthday !='' ">
+                #{birthday},
+            </if>
+            <if test="birthyear != null ">
+                #{birthyear},
+            </if>
+            <if test="country != null and country !='' ">
+                #{country},
+            </if>
+            <if test="province != null and province !='' ">
+                #{province},
+            </if>
+            <if test="city != null and city !='' ">
+                #{city},
+            </if>
+            <if test="county != null and county !='' ">
+                #{county},
+            </if>
+            <if test="chatCount != null ">
+                #{chatCount},
+            </if>
+            <if test="firstChatTime != null and firstChatTime !='' ">
+                #{firstChatTime},
+            </if>
+            <if test="firstChatPlatform != null and firstChatPlatform !='' ">
+                #{firstChatPlatform},
+            </if>
+            <if test="firstChatWith != null and firstChatWith !='' ">
+                #{firstChatWith},
+            </if>
+            <if test="lastChatTime != null and lastChatTime !='' ">
+                #{lastChatTime},
+            </if>
+            <if test="lastChatPlatform != null and lastChatPlatform !='' ">
+                #{lastChatPlatform},
+            </if>
+            <if test="lastChatWith != null and lastChatWith !='' ">
+                #{lastChatWith},
+            </if>
+            <if test="payAmount != null ">
+                #{payAmount},
+            </if>
+            <if test="payCount != null ">
+                #{payCount},
+            </if>
+            <if test="refundAmount != null ">
+                #{refundAmount},
+            </if>
+            <if test="refundCount != null ">
+                #{refundCount},
+            </if>
+            <if test="lastPayAmount != null ">
+                #{lastPayAmount},
+            </if>
+            <if test="lastPayTime != null and lastPayTime !='' ">
+                #{lastPayTime},
+            </if>
+            <if test="firstPayAmount != null ">
+                #{firstPayAmount},
+            </if>
+            <if test="firstPayTime != null and firstPayTime !='' ">
+                #{firstPayTime},
+            </if>
+            <if test="firstLoginTime != null and firstLoginTime !='' ">
+                #{firstLoginTime},
+            </if>
+            <if test="firstLoginPlatform != null and firstLoginPlatform !='' ">
+                #{firstLoginPlatform},
+            </if>
+            <if test="isTaobaoUser != null ">
+                #{isTaobaoUser},
+            </if>
+            <if test="isWechatUser != null ">
+                #{isWechatUser},
+            </if>
+            <if test="isZimeihuiUser != null ">
+                #{isZimeihuiUser},
+            </if>
+            <if test="isTaobaoChated != null ">
+                #{isTaobaoChated},
+            </if>
+            <if test="isWechatChated != null ">
+                #{isWechatChated},
+            </if>
+            <if test="isZimeihuiChated != null ">
+                #{isZimeihuiChated},
+            </if>
+            <if test="isTaobaoPayed != null ">
+                #{isTaobaoPayed},
+            </if>
+            <if test="isWechatPayed != null ">
+                #{isWechatPayed},
+            </if>
+            <if test="isZimeihuiPayed != null ">
+                #{isZimeihuiPayed},
+            </if>
+            <if test="taobaoPayAmount != null ">
+                #{taobaoPayAmount},
+            </if>
+            <if test="taobaoPayCount != null ">
+                #{taobaoPayCount},
+            </if>
+            <if test="taobaoFirstPayAmount != null ">
+                #{taobaoFirstPayAmount},
+            </if>
+            <if test="taobaoFirstPayTime != null ">
+                #{taobaoFirstPayTime},
+            </if>
+            <if test="taobaoLastPayAmount != null ">
+                #{taobaoLastPayAmount},
+            </if>
+            <if test="taobaoLastPayTime != null and taobaoLastPayTime !='' ">
+                #{taobaoLastPayTime},
+            </if>
+            <if test="wechatChatCout != null ">
+                #{wechatChatCout},
+            </if>
+            <if test="wechatChatInfoTotal != null ">
+                #{wechatChatInfoTotal},
+            </if>
+            <if test="wechatNo != null and wechatNo !='' ">
+                #{wechatNo},
+            </if>
+            <if test="wechatNickname != null and wechatNickname !='' ">
+                #{wechatNickname},
+            </if>
+            <if test="wechatBelongTo != null and wechatBelongTo !='' ">
+                #{wechatBelongTo},
+            </if>
+            <if test="wechatFirstAdd != null and wechatFirstAdd !='' ">
+                #{wechatFirstAdd},
+            </if>
+            <if test="wechatFirstAddTime != null and wechatFirstAddTime !='' ">
+                #{wechatFirstAddTime},
+            </if>
+            <if test="wechatFirstChatWith != null and wechatFirstChatWith !='' ">
+                #{wechatFirstChatWith},
+            </if>
+            <if test="wechatFirstChatTime != null and wechatFirstChatTime !='' ">
+                #{wechatFirstChatTime},
+            </if>
+            <if test="wechatLastChatWith != null and wechatLastChatWith !='' ">
+                #{wechatLastChatWith},
+            </if>
+            <if test="wechatLastChatTime != null and wechatLastChatTime !='' ">
+                #{wechatLastChatTime},
+            </if>
+            <if test="wechatPayAmount != null ">
+                #{wechatPayAmount},
+            </if>
+            <if test="wechatPayCount != null ">
+                #{wechatPayCount},
+            </if>
+            <if test="wechatFirstPayTime != null and wechatFirstPayTime !='' ">
+                #{wechatFirstPayTime},
+            </if>
+            <if test="wecahtFirstPayAmount != null ">
+                #{wecahtFirstPayAmount},
+            </if>
+            <if test="wecahtLastPayTime != null and wecahtLastPayTime !='' ">
+                #{wecahtLastPayTime},
+            </if>
+            <if test="wechatLastPayAmount != null ">
+                #{wechatLastPayAmount},
+            </if>
+            <if test="wechatLifeStatus != null and wechatLifeStatus !='' ">
+                #{wechatLifeStatus},
+            </if>
+            <if test="wechatIsVIPCardUser != null ">
+                #{wechatIsVIPCardUser},
+            </if>
+            <if test="wechatVIPTime != null and wechatVIPTime !='' ">
+                #{wechatVIPTime},
+            </if>
+            <if test="wechatVIPCardBalance != null ">
+                #{wechatVIPCardBalance},
+            </if>
+            <if test="wechatVIPCardAmount != null ">
+                #{wechatVIPCardAmount},
+            </if>
+            <if test="zimeihuiPhone != null and zimeihuiPhone !='' ">
+                #{zimeihuiPhone},
+            </if>
+            <if test="zimeihuiNickname != null and zimeihuiNickname !='' ">
+                #{zimeihuiNickname},
+            </if>
+            <if test="zimeihuiFXRole != null and zimeihuiFXRole !='' ">
+                #{zimeihuiFXRole},
+            </if>
+            <if test="zimeihuiRegisterTime != null and zimeihuiRegisterTime !='' ">
+                #{zimeihuiRegisterTime},
+            </if>
+            <if test="zimeihuiFirstPayTime != null and zimeihuiFirstPayTime !='' ">
+                #{zimeihuiFirstPayTime},
+            </if>
+            <if test="zimeihuiFirstPayAmount != null ">
+                #{zimeihuiFirstPayAmount},
+            </if>
+            <if test="zimeihuiLastPayTime != null and zimeihuiLastPayTime !='' ">
+                #{zimeihuiLastPayTime},
+            </if>
+            <if test="zimeihuiPayAmount != null ">
+                #{zimeihuiPayAmount},
+            </if>
+            <if test="zimeihuiPayCount != null ">
+                #{zimeihuiPayCount},
+            </if>
+            <if test="isWOARegister != null ">
+                #{isWOARegister},
+            </if>
+            <if test="createTime != null and createTime !='' ">
+                #{createTime},
+            </if>
+            <if test="createSource != null and createSource !='' ">
+                #{createSource},
+            </if>
+            <if test="updateTime != null and updateTime !='' ">
+                #{updateTime},
+            </if>
+            <if test="remark != null and remark !='' ">
+                #{remark},
+            </if>
+
+        </trim>
+    </insert>
+
+
+    <update id="updateByPrimaryKey" parameterType="com.serverBigdata.api.entity.User">
+        UPDATE u_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="id != null ">
+                id = #{id},
+            </if>
+            <if test="userId != null ">
+                userId = #{userId},
+            </if>
+            <if test="phone != null and phone !='' ">
+                phone = #{phone},
+            </if>
+            <if test="aliwangwang != null and aliwangwang !='' ">
+                aliwangwang = #{aliwangwang},
+            </if>
+            <if test="wechatId != null and wechatId !='' ">
+                wechatId = #{wechatId},
+            </if>
+            <if test="zimeihuiUserId != null and zimeihuiUserId !='' ">
+                zimeihuiUserId = #{zimeihuiUserId},
+            </if>
+            <if test="userName != null and userName !='' ">
+                userName = #{userName},
+            </if>
+            <if test="headImgurl != null and headImgurl !='' ">
+                headImgurl = #{headImgurl},
+            </if>
+            <if test="shendengUid != null and shendengUid !='' ">
+                shendengUid = #{shendengUid},
+            </if>
+            <if test="level != null and level !='' ">
+                level = #{level},
+            </if>
+            <if test="sex != null ">
+                sex = #{sex},
+            </if>
+            <if test="height != null ">
+                height = #{height},
+            </if>
+            <if test="weight != null ">
+                weight = #{weight},
+            </if>
+            <if test="birthday != null and birthday !='' ">
+                birthday = #{birthday},
+            </if>
+            <if test="birthyear != null ">
+                birthyear = #{birthyear},
+            </if>
+            <if test="country != null and country !='' ">
+                country = #{country},
+            </if>
+            <if test="province != null and province !='' ">
+                province = #{province},
+            </if>
+            <if test="city != null and city !='' ">
+                city = #{city},
+            </if>
+            <if test="county != null and county !='' ">
+                county = #{county},
+            </if>
+            <if test="chatCount != null ">
+                chatCount = #{chatCount},
+            </if>
+            <if test="firstChatTime != null and firstChatTime !='' ">
+                firstChatTime = #{firstChatTime},
+            </if>
+            <if test="firstChatPlatform != null and firstChatPlatform !='' ">
+                firstChatPlatform = #{firstChatPlatform},
+            </if>
+            <if test="firstChatWith != null and firstChatWith !='' ">
+                firstChatWith = #{firstChatWith},
+            </if>
+            <if test="lastChatTime != null and lastChatTime !='' ">
+                lastChatTime = #{lastChatTime},
+            </if>
+            <if test="lastChatPlatform != null and lastChatPlatform !='' ">
+                lastChatPlatform = #{lastChatPlatform},
+            </if>
+            <if test="lastChatWith != null and lastChatWith !='' ">
+                lastChatWith = #{lastChatWith},
+            </if>
+            <if test="payAmount != null ">
+                payAmount = #{payAmount},
+            </if>
+            <if test="payCount != null ">
+                payCount = #{payCount},
+            </if>
+            <if test="refundAmount != null ">
+                refundAmount = #{refundAmount},
+            </if>
+            <if test="refundCount != null ">
+                refundCount = #{refundCount},
+            </if>
+            <if test="lastPayAmount != null ">
+                lastPayAmount = #{lastPayAmount},
+            </if>
+            <if test="lastPayTime != null and lastPayTime !='' ">
+                lastPayTime = #{lastPayTime},
+            </if>
+            <if test="firstPayAmount != null ">
+                firstPayAmount = #{firstPayAmount},
+            </if>
+            <if test="firstPayTime != null and firstPayTime !='' ">
+                firstPayTime = #{firstPayTime},
+            </if>
+            <if test="firstLoginTime != null and firstLoginTime !='' ">
+                firstLoginTime = #{firstLoginTime},
+            </if>
+            <if test="firstLoginPlatform != null and firstLoginPlatform !='' ">
+                firstLoginPlatform = #{firstLoginPlatform},
+            </if>
+            <if test="isTaobaoUser != null ">
+                isTaobaoUser = #{isTaobaoUser},
+            </if>
+            <if test="isWechatUser != null ">
+                isWechatUser = #{isWechatUser},
+            </if>
+            <if test="isZimeihuiUser != null ">
+                isZimeihuiUser = #{isZimeihuiUser},
+            </if>
+            <if test="isTaobaoChated != null ">
+                isTaobaoChated = #{isTaobaoChated},
+            </if>
+            <if test="isWechatChated != null ">
+                isWechatChated = #{isWechatChated},
+            </if>
+            <if test="isZimeihuiChated != null ">
+                isZimeihuiChated = #{isZimeihuiChated},
+            </if>
+            <if test="isTaobaoPayed != null ">
+                isTaobaoPayed = #{isTaobaoPayed},
+            </if>
+            <if test="isWechatPayed != null ">
+                isWechatPayed = #{isWechatPayed},
+            </if>
+            <if test="isZimeihuiPayed != null ">
+                isZimeihuiPayed = #{isZimeihuiPayed},
+            </if>
+            <if test="taobaoPayAmount != null ">
+                taobaoPayAmount = #{taobaoPayAmount},
+            </if>
+            <if test="taobaoPayCount != null ">
+                taobaoPayCount = #{taobaoPayCount},
+            </if>
+            <if test="taobaoFirstPayAmount != null ">
+                taobaoFirstPayAmount = #{taobaoFirstPayAmount},
+            </if>
+            <if test="taobaoFirstPayTime != null ">
+                taobaoFirstPayTime = #{taobaoFirstPayTime},
+            </if>
+            <if test="taobaoLastPayAmount != null ">
+                taobaoLastPayAmount = #{taobaoLastPayAmount},
+            </if>
+            <if test="taobaoLastPayTime != null and taobaoLastPayTime !='' ">
+                taobaoLastPayTime = #{taobaoLastPayTime},
+            </if>
+            <if test="wechatChatCout != null ">
+                wechatChatCout = #{wechatChatCout},
+            </if>
+            <if test="wechatChatInfoTotal != null ">
+                wechatChatInfoTotal = #{wechatChatInfoTotal},
+            </if>
+            <if test="wechatNo != null and wechatNo !='' ">
+                wechatNo = #{wechatNo},
+            </if>
+            <if test="wechatNickname != null and wechatNickname !='' ">
+                wechatNickname = #{wechatNickname},
+            </if>
+            <if test="wechatBelongTo != null and wechatBelongTo !='' ">
+                wechatBelongTo = #{wechatBelongTo},
+            </if>
+            <if test="wechatFirstAdd != null and wechatFirstAdd !='' ">
+                wechatFirstAdd = #{wechatFirstAdd},
+            </if>
+            <if test="wechatFirstAddTime != null and wechatFirstAddTime !='' ">
+                wechatFirstAddTime = #{wechatFirstAddTime},
+            </if>
+            <if test="wechatFirstChatWith != null and wechatFirstChatWith !='' ">
+                wechatFirstChatWith = #{wechatFirstChatWith},
+            </if>
+            <if test="wechatFirstChatTime != null and wechatFirstChatTime !='' ">
+                wechatFirstChatTime = #{wechatFirstChatTime},
+            </if>
+            <if test="wechatLastChatWith != null and wechatLastChatWith !='' ">
+                wechatLastChatWith = #{wechatLastChatWith},
+            </if>
+            <if test="wechatLastChatTime != null and wechatLastChatTime !='' ">
+                wechatLastChatTime = #{wechatLastChatTime},
+            </if>
+            <if test="wechatPayAmount != null ">
+                wechatPayAmount = #{wechatPayAmount},
+            </if>
+            <if test="wechatPayCount != null ">
+                wechatPayCount = #{wechatPayCount},
+            </if>
+            <if test="wechatFirstPayTime != null and wechatFirstPayTime !='' ">
+                wechatFirstPayTime = #{wechatFirstPayTime},
+            </if>
+            <if test="wecahtFirstPayAmount != null ">
+                wecahtFirstPayAmount = #{wecahtFirstPayAmount},
+            </if>
+            <if test="wecahtLastPayTime != null and wecahtLastPayTime !='' ">
+                wecahtLastPayTime = #{wecahtLastPayTime},
+            </if>
+            <if test="wechatLastPayAmount != null ">
+                wechatLastPayAmount = #{wechatLastPayAmount},
+            </if>
+            <if test="wechatLifeStatus != null and wechatLifeStatus !='' ">
+                wechatLifeStatus = #{wechatLifeStatus},
+            </if>
+            <if test="wechatIsVIPCardUser != null ">
+                wechatIsVIPCardUser = #{wechatIsVIPCardUser},
+            </if>
+            <if test="wechatVIPTime != null and wechatVIPTime !='' ">
+                wechatVIPTime = #{wechatVIPTime},
+            </if>
+            <if test="wechatVIPCardBalance != null ">
+                wechatVIPCardBalance = #{wechatVIPCardBalance},
+            </if>
+            <if test="wechatVIPCardAmount != null ">
+                wechatVIPCardAmount = #{wechatVIPCardAmount},
+            </if>
+            <if test="zimeihuiPhone != null and zimeihuiPhone !='' ">
+                zimeihuiPhone = #{zimeihuiPhone},
+            </if>
+            <if test="zimeihuiNickname != null and zimeihuiNickname !='' ">
+                zimeihuiNickname = #{zimeihuiNickname},
+            </if>
+            <if test="zimeihuiFXRole != null and zimeihuiFXRole !='' ">
+                zimeihuiFXRole = #{zimeihuiFXRole},
+            </if>
+            <if test="zimeihuiRegisterTime != null and zimeihuiRegisterTime !='' ">
+                zimeihuiRegisterTime = #{zimeihuiRegisterTime},
+            </if>
+            <if test="zimeihuiFirstPayTime != null and zimeihuiFirstPayTime !='' ">
+                zimeihuiFirstPayTime = #{zimeihuiFirstPayTime},
+            </if>
+            <if test="zimeihuiFirstPayAmount != null ">
+                zimeihuiFirstPayAmount = #{zimeihuiFirstPayAmount},
+            </if>
+            <if test="zimeihuiLastPayTime != null and zimeihuiLastPayTime !='' ">
+                zimeihuiLastPayTime = #{zimeihuiLastPayTime},
+            </if>
+            <if test="zimeihuiPayAmount != null ">
+                zimeihuiPayAmount = #{zimeihuiPayAmount},
+            </if>
+            <if test="zimeihuiPayCount != null ">
+                zimeihuiPayCount = #{zimeihuiPayCount},
+            </if>
+            <if test="isWOARegister != null ">
+                isWOARegister = #{isWOARegister},
+            </if>
+            <if test="createTime != null and createTime !='' ">
+                createTime = #{createTime},
+            </if>
+            <if test="createSource != null and createSource !='' ">
+                createSource = #{createSource},
+            </if>
+            <if test="updateTime != null and updateTime !='' ">
+                updateTime = #{updateTime},
+            </if>
+            <if test="remark != null and remark !='' ">
+                remark = #{remark},
+            </if>
+
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+
+
+</mapper>
